@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Signup
+{% endblock title %}
+
+{% block body %}
+<div class="container mt-3">
+
+  <div class="row">
+
+
+    <div class="col-md-4">
+
+    </div>
+
+    <div class="col-md-4 jumbotron">
+      <h4 class="text-center bg-light text-dark"
+        style="padding: 8px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size: larger;">SIGN UP
+      </h4>
+      <br>
+
+
+      {% with messages=get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      {% for category, message in messages %}
+
+      <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+        {{message}}
+
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+
+
+      <form action="/signup" method="POST">
+
+        <div class="form-group">
+          <label for="username" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">User Name</label>
+          <input style="width:100%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px;" type="text" class="form-control" id="username" name="username" required>
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="usertype" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Select User
+            Type</label>
+
+          <select class="form-control" id="usertype" name="usertype" required>
+            <option selected style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: medium;">
+              Select</option>
+            <option value="Patient"
+              style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: medium;">Patient</option>
+            <option value="Doctor"
+              style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: medium;">Doctor</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="email" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Email Address</label>
+          <input  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; width: 100%; font-size: medium;" type="email" class="form-control" id="email" name="email" required>
+          <small id="emailHelp" class="form-text "
+            style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:hsl(35, 96%, 60%);">We'll never share your
+            email with anyone else.</small>
+        </div>
+
+
+        <div class="form-group">
+          <label for="password" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Password</label>
+          <input style="width: 100%; font-size: medium; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="password" class="form-control" id="password" name="password" required>
+        </div>
+
+        <button type="submit" class="btn btn-dark btn-sm btn-block" style="background-color: #40A2E3; color:#fff ;padding:8px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: large; margin-top: 30px;">Signup</button>
+      </form>
+      <br>
+      <span style="color:#fff">Already a User ? </span> <a href="/login">Login</a>
+
+    </div>
+
+    <div class="col-md-4">
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+{% endblock body %}
